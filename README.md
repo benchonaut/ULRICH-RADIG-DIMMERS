@@ -11,6 +11,7 @@ Since
 
 will be max 128 or 127  and the dimmmer has 90 possible values from phase cutting ,
  the transformation is done as suggested in his forum[1] via valMap
+
 hint: the values are reversed 100%=0 ,0%=90 internal 
 
 #### install:
