@@ -1,0 +1,104 @@
+Partlist
+
+Exported from 8CH Dimmer.sch at 19.04.2017 21:17
+
+EAGLE Version 7.7.0 Copyright (c) 1988-2016 CadSoft
+
+Assembly variant: 
+
+Part     Value          Device          Package           Library              Sheet
+
+B1                      2KBB-R          2KBB-R            rectifier            1
+C1       0.22µF 275V    C-EU150-072X183 C150-072X183      rcl                  1
+C2       0.22µF 275V    C-EU150-072X183 C150-072X183      rcl                  1
+C3       0.22µF 275V    C-EU150-072X183 C150-072X183      rcl                  1
+C4       0.22µF 275V    C-EU150-072X183 C150-072X183      rcl                  1
+C5       0.22µF 275V    C-EU150-072X183 C150-072X183      rcl                  1
+C6       0.22µF 275V    C-EU150-072X183 C150-072X183      rcl                  1
+C7       0.22µF 275V    C-EU150-072X183 C150-072X183      rcl                  1
+C8       0.22µF 275V    C-EU150-072X183 C150-072X183      rcl                  1
+C9       220µ           CPOL-EUE5-8.5   E5-8,5            rcl                  1
+C10      100n           C-EUC0805K      C0805K            rcl                  1
+C11      100n           C-EUC0805K      C0805K            rcl                  1
+C12      100n           C-EUC0805       C0805             rcl                  2
+C13      100n           C-EUC0805       C0805             rcl                  2
+C14      22p            C-EUC0805       C0805             rcl                  2
+C15      22p            C-EUC0805       C0805             rcl                  2
+C16      100n           C-EUC0805       C0805             rcl                  2
+C17      100n           C-EUC0805       C0805             rcl                  2
+C18      100n           C-EUC0805       C0805             rcl                  2
+C19      100n           C-EUC0805K      C0805K            rcl                  1
+D1       1N4007         1N4004          DO41-10           diode                1
+D4       SMBJ6,0        MBRS130LT3      SMB               diode                2
+D6       SMBJ6,0        MBRS130LT3      SMB               diode                2
+F1       T3,15          FUSESH22,5A     SH22,5A           fuse                 1
+IC1      MEGA88         MEGA8-AI        TQFP32-08         atmel_old            2
+IC2      78L05SMD       78L05SMD        SO08              linear               1
+IC3      SN75176AD      SN65176D        SO-08             texas                2
+IC4      74HC595D       74HC595D        SO16              74xx-eu              1
+LED1     LED1206        LEDCHIPLED_1206 CHIPLED_1206      led                  2
+LED2     LED1206        LEDCHIPLED_1206 CHIPLED_1206      led                  2
+OK1      MOC3022M       MOC3022M        DIL06             optocoupler          1
+OK2      MOC3022M       MOC3022M        DIL06             optocoupler          1
+OK3      MOC3022M       MOC3022M        DIL06             optocoupler          1
+OK4      MOC3022M       MOC3022M        DIL06             optocoupler          1
+OK5      MOC3022M       MOC3022M        DIL06             optocoupler          1
+OK6      MOC3022M       MOC3022M        DIL06             optocoupler          1
+OK7      MOC3022M       MOC3022M        DIL06             optocoupler          1
+OK8      MOC3022M       MOC3022M        DIL06             optocoupler          1
+OK9      CNY65          IL10            DIL16-4_1_7_10_16 optocoupler          1
+Q4       12M            CRYSTALHC49S    HC49/S            crystal              2
+R1       270            R-EU_0207/10    0207/10           rcl                  1
+R2       1K 1W          R-EU_0207/10    0207/10           rcl                  1
+R3       390            R-EU_R0805      R0805             rcl                  1
+R4       270            R-EU_0207/10    0207/10           rcl                  1
+R5       1K 1W          R-EU_0207/10    0207/10           rcl                  1
+R6       390            R-EU_R0805      R0805             rcl                  1
+R7       270            R-EU_0207/10    0207/10           rcl                  1
+R8       1K 1W          R-EU_0207/10    0207/10           rcl                  1
+R9       390            R-EU_R0805      R0805             rcl                  1
+R10      270            R-EU_0207/10    0207/10           rcl                  1
+R11      1K 1W          R-EU_0207/10    0207/10           rcl                  1
+R12      390            R-EU_R0805      R0805             rcl                  1
+R13      270            R-EU_0207/10    0207/10           rcl                  1
+R14      1K 1W          R-EU_0207/10    0207/10           rcl                  1
+R15      390            R-EU_R0805      R0805             rcl                  1
+R16      270            R-EU_0207/10    0207/10           rcl                  1
+R17      1K 1W          R-EU_0207/10    0207/10           rcl                  1
+R18      390            R-EU_R0805      R0805             rcl                  1
+R19      270            R-EU_0207/10    0207/10           rcl                  1
+R20      1K 1W          R-EU_0207/10    0207/10           rcl                  1
+R21      390            R-EU_R0805      R0805             rcl                  1
+R22      270            R-EU_0207/10    0207/10           rcl                  1
+R23      1K 1W          R-EU_0207/10    0207/10           rcl                  1
+R24      390            R-EU_R0805      R0805             rcl                  1
+R25      33k            R-EU_0207/10    0207/10           rcl                  1
+R26      33k            R-EU_0207/10    0207/10           rcl                  1
+R27      10k            R-EU_R0805      R0805             rcl                  1
+R28      10k            R-EU_R0805      R0805             rcl                  2
+R29      10             R-EU_R0805      R0805             rcl                  2
+R30      10             R-EU_R0805      R0805             rcl                  2
+R31      100            R-EU_R0805      R0805             rcl                  2
+R32      1k             R-EU_R0805      R0805             rcl                  2
+R33      1k             R-EU_R0805      R0805             rcl                  2
+S1       DIP_Switch_10  DS10            DS-10             switch-dil           2
+SV1      WSL 6          ML6             ML6               con-harting-ml       2
+T1       TIC206D        TIC206D         TO220BV           triac                1
+T2       TIC206D        TIC206D         TO220BV           triac                1
+T3       TIC206D        TIC206D         TO220BV           triac                1
+T4       TIC206D        TIC206D         TO220BV           triac                1
+T5       TIC206D        TIC206D         TO220BV           triac                1
+T6       TIC206D        TIC206D         TO220BV           triac                1
+T7       TIC206D        TIC206D         TO220BV           triac                1
+T8       TIC206D        TIC206D         TO220BV           triac                1
+TR1      TRAFO 9V       EI30-2          EI30-2            trafo                1
+X4                      90-3            90-3              con-weidmueller-sl35 2
+X10                     W237-103        W237-103          con-wago-500         1
+X11                     W237-103        W237-103          con-wago-500         1
+X12                     W237-103        W237-103          con-wago-500         1
+X13                     W237-103        W237-103          con-wago-500         1
+X14                     W237-103        W237-103          con-wago-500         1
+X15                     W237-103        W237-103          con-wago-500         1
+X16                     W237-103        W237-103          con-wago-500         1
+X17                     W237-103        W237-103          con-wago-500         1
+X18                     W237-103        W237-103          con-wago-500         1

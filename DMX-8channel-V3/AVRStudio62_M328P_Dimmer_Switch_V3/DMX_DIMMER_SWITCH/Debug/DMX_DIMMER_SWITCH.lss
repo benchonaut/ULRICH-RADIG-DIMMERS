@@ -1,0 +1,733 @@
+
+DMX_DIMMER_SWITCH.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000002  00800100  000003d2  00000466  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         000003d2  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .bss          0000020f  00800102  00800102  00000468  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  00000468  2**0
+                  CONTENTS, READONLY
+  4 .debug_aranges 00000040  00000000  00000000  00000498  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   00000255  00000000  00000000  000004d8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 00000161  00000000  00000000  0000072d  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   000001b9  00000000  00000000  0000088e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  000000dc  00000000  00000000  00000a48  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    0000020a  00000000  00000000  00000b24  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    00000325  00000000  00000000  00000d2e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000030  00000000  00000000  00001053  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+   8:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+   c:	0c 94 03 01 	jmp	0x206	; 0x206 <__vector_3>
+  10:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  14:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  18:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  1c:	0c 94 aa 00 	jmp	0x154	; 0x154 <__vector_7>
+  20:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  24:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  28:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  2c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  30:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  34:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  38:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  3c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  40:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  44:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  48:	0c 94 53 00 	jmp	0xa6	; 0xa6 <__vector_18>
+  4c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  50:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  54:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  58:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  5c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  60:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  64:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d8 e0       	ldi	r29, 0x08	; 8
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_copy_data>:
+  74:	11 e0       	ldi	r17, 0x01	; 1
+  76:	a0 e0       	ldi	r26, 0x00	; 0
+  78:	b1 e0       	ldi	r27, 0x01	; 1
+  7a:	e2 ed       	ldi	r30, 0xD2	; 210
+  7c:	f3 e0       	ldi	r31, 0x03	; 3
+  7e:	02 c0       	rjmp	.+4      	; 0x84 <__do_copy_data+0x10>
+  80:	05 90       	lpm	r0, Z+
+  82:	0d 92       	st	X+, r0
+  84:	a2 30       	cpi	r26, 0x02	; 2
+  86:	b1 07       	cpc	r27, r17
+  88:	d9 f7       	brne	.-10     	; 0x80 <__do_copy_data+0xc>
+
+0000008a <__do_clear_bss>:
+  8a:	23 e0       	ldi	r18, 0x03	; 3
+  8c:	a2 e0       	ldi	r26, 0x02	; 2
+  8e:	b1 e0       	ldi	r27, 0x01	; 1
+  90:	01 c0       	rjmp	.+2      	; 0x94 <.do_clear_bss_start>
+
+00000092 <.do_clear_bss_loop>:
+  92:	1d 92       	st	X+, r1
+
+00000094 <.do_clear_bss_start>:
+  94:	a1 31       	cpi	r26, 0x11	; 17
+  96:	b2 07       	cpc	r27, r18
+  98:	e1 f7       	brne	.-8      	; 0x92 <.do_clear_bss_loop>
+  9a:	0e 94 11 01 	call	0x222	; 0x222 <main>
+  9e:	0c 94 e7 01 	jmp	0x3ce	; 0x3ce <_exit>
+
+000000a2 <__bad_interrupt>:
+  a2:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+000000a6 <__vector_18>:
+#define CS_595_HI()				PORTB &= ~(1<<CS_595)
+#define CS_595_LO()				PORTB |= (1<<CS_595)
+
+//############################################################################
+//Empfangsroutine für DMX
+ISR (USART_RX_vect){
+  a6:	1f 92       	push	r1
+  a8:	0f 92       	push	r0
+  aa:	0f b6       	in	r0, 0x3f	; 63
+  ac:	0f 92       	push	r0
+  ae:	11 24       	eor	r1, r1
+  b0:	2f 93       	push	r18
+  b2:	8f 93       	push	r24
+  b4:	9f 93       	push	r25
+  b6:	ef 93       	push	r30
+  b8:	ff 93       	push	r31
+	static unsigned int dmx_channel_rx_count = 0;
+	static unsigned char dmx_valid = 0;
+	unsigned char tmp = 0;
+	
+	tmp =  UDR0;
+  ba:	20 91 c6 00 	lds	r18, 0x00C6
+	
+	if(UCSR0A&(1<<FE0)){
+  be:	80 91 c0 00 	lds	r24, 0x00C0
+  c2:	84 ff       	sbrs	r24, 4
+  c4:	21 c0       	rjmp	.+66     	; 0x108 <__vector_18+0x62>
+		if(dmx_channel_rx_count > 1){
+  c6:	80 91 03 01 	lds	r24, 0x0103
+  ca:	90 91 04 01 	lds	r25, 0x0104
+  ce:	02 97       	sbiw	r24, 0x02	; 2
+  d0:	20 f0       	brcs	.+8      	; 0xda <__vector_18+0x34>
+			dmx_lost = 0;
+  d2:	10 92 01 01 	sts	0x0101, r1
+  d6:	10 92 00 01 	sts	0x0100, r1
+		}
+		dmx_channel_rx_count = 0;	
+  da:	10 92 04 01 	sts	0x0104, r1
+  de:	10 92 03 01 	sts	0x0103, r1
+		dmx_buffer[0] = tmp;
+  e2:	e0 e1       	ldi	r30, 0x10	; 16
+  e4:	f1 e0       	ldi	r31, 0x01	; 1
+  e6:	20 83       	st	Z, r18
+		if(dmx_buffer[0] == 0){
+  e8:	80 81       	ld	r24, Z
+  ea:	81 11       	cpse	r24, r1
+  ec:	0a c0       	rjmp	.+20     	; 0x102 <__vector_18+0x5c>
+			dmx_valid = 1;
+  ee:	81 e0       	ldi	r24, 0x01	; 1
+  f0:	80 93 02 01 	sts	0x0102, r24
+			dmx_channel_rx_count++;
+  f4:	81 e0       	ldi	r24, 0x01	; 1
+  f6:	90 e0       	ldi	r25, 0x00	; 0
+  f8:	90 93 04 01 	sts	0x0104, r25
+  fc:	80 93 03 01 	sts	0x0103, r24
+ 100:	18 c0       	rjmp	.+48     	; 0x132 <__vector_18+0x8c>
+		}else{
+			dmx_valid = 0;
+ 102:	10 92 02 01 	sts	0x0102, r1
+ 106:	15 c0       	rjmp	.+42     	; 0x132 <__vector_18+0x8c>
+		}
+		return;
+	}
+	
+	if(dmx_valid){
+ 108:	80 91 02 01 	lds	r24, 0x0102
+ 10c:	88 23       	and	r24, r24
+ 10e:	89 f0       	breq	.+34     	; 0x132 <__vector_18+0x8c>
+		dmx_buffer[dmx_channel_rx_count] = tmp;	
+ 110:	80 91 03 01 	lds	r24, 0x0103
+ 114:	90 91 04 01 	lds	r25, 0x0104
+ 118:	fc 01       	movw	r30, r24
+ 11a:	e0 5f       	subi	r30, 0xF0	; 240
+ 11c:	fe 4f       	sbci	r31, 0xFE	; 254
+ 11e:	20 83       	st	Z, r18
+		if(dmx_channel_rx_count < 513)
+ 120:	81 30       	cpi	r24, 0x01	; 1
+ 122:	22 e0       	ldi	r18, 0x02	; 2
+ 124:	92 07       	cpc	r25, r18
+ 126:	28 f4       	brcc	.+10     	; 0x132 <__vector_18+0x8c>
+		{
+			dmx_channel_rx_count++;
+ 128:	01 96       	adiw	r24, 0x01	; 1
+ 12a:	90 93 04 01 	sts	0x0104, r25
+ 12e:	80 93 03 01 	sts	0x0103, r24
+		}
+		return;
+	}
+}
+ 132:	ff 91       	pop	r31
+ 134:	ef 91       	pop	r30
+ 136:	9f 91       	pop	r25
+ 138:	8f 91       	pop	r24
+ 13a:	2f 91       	pop	r18
+ 13c:	0f 90       	pop	r0
+ 13e:	0f be       	out	0x3f, r0	; 63
+ 140:	0f 90       	pop	r0
+ 142:	1f 90       	pop	r1
+ 144:	18 95       	reti
+
+00000146 <out_ext>:
+
+//############################################################################
+//Porterweiterung OUTPUT 1 - 8 via SPI-BUS
+void out_ext (unsigned char value){
+	CS_595_LO();
+ 146:	2a 9a       	sbi	0x05, 2	; 5
+	SPDR = value;
+ 148:	8e bd       	out	0x2e, r24	; 46
+	while( !(SPSR & (1<<SPIF)) ) ;
+ 14a:	0d b4       	in	r0, 0x2d	; 45
+ 14c:	07 fe       	sbrs	r0, 7
+ 14e:	fd cf       	rjmp	.-6      	; 0x14a <out_ext+0x4>
+	CS_595_HI();
+ 150:	2a 98       	cbi	0x05, 2	; 5
+ 152:	08 95       	ret
+
+00000154 <__vector_7>:
+}
+
+//############################################################################
+//Hier wird die Zeit gezählt (Tick 100µs)
+ISR (TIMER2_COMPA_vect)
+{
+ 154:	1f 92       	push	r1
+ 156:	0f 92       	push	r0
+ 158:	0f b6       	in	r0, 0x3f	; 63
+ 15a:	0f 92       	push	r0
+ 15c:	11 24       	eor	r1, r1
+ 15e:	2f 93       	push	r18
+ 160:	3f 93       	push	r19
+ 162:	4f 93       	push	r20
+ 164:	5f 93       	push	r21
+ 166:	6f 93       	push	r22
+ 168:	7f 93       	push	r23
+ 16a:	8f 93       	push	r24
+ 16c:	9f 93       	push	r25
+ 16e:	af 93       	push	r26
+ 170:	bf 93       	push	r27
+ 172:	ef 93       	push	r30
+ 174:	ff 93       	push	r31
+	unsigned char out = 0;
+	unsigned char tmp = 0;
+	phase_on_count++;
+ 176:	80 91 05 01 	lds	r24, 0x0105
+ 17a:	8f 5f       	subi	r24, 0xFF	; 255
+ 17c:	80 93 05 01 	sts	0x0105, r24
+	
+	if(phase_on_count > 240){
+ 180:	80 91 05 01 	lds	r24, 0x0105
+ 184:	81 3f       	cpi	r24, 0xF1	; 241
+ 186:	10 f0       	brcs	.+4      	; 0x18c <__vector_7+0x38>
+		phase_on_count = 0;
+ 188:	10 92 05 01 	sts	0x0105, r1
+}
+
+//############################################################################
+//Hier wird die Zeit gezählt (Tick 100µs)
+ISR (TIMER2_COMPA_vect)
+{
+ 18c:	20 e0       	ldi	r18, 0x00	; 0
+ 18e:	30 e0       	ldi	r19, 0x00	; 0
+	unsigned char out = 0;
+ 190:	80 e0       	ldi	r24, 0x00	; 0
+	if(phase_on_count > 240){
+		phase_on_count = 0;
+	}
+	
+	for(tmp = 0;tmp <8;tmp++){
+		if(phase_on_count>val[tmp]) out |= (1<<tmp);
+ 192:	61 e0       	ldi	r22, 0x01	; 1
+ 194:	70 e0       	ldi	r23, 0x00	; 0
+ 196:	f9 01       	movw	r30, r18
+ 198:	e8 5f       	subi	r30, 0xF8	; 248
+ 19a:	fe 4f       	sbci	r31, 0xFE	; 254
+ 19c:	40 81       	ld	r20, Z
+ 19e:	90 91 05 01 	lds	r25, 0x0105
+ 1a2:	49 17       	cp	r20, r25
+ 1a4:	40 f4       	brcc	.+16     	; 0x1b6 <__vector_7+0x62>
+ 1a6:	ab 01       	movw	r20, r22
+ 1a8:	02 2e       	mov	r0, r18
+ 1aa:	02 c0       	rjmp	.+4      	; 0x1b0 <__vector_7+0x5c>
+ 1ac:	44 0f       	add	r20, r20
+ 1ae:	55 1f       	adc	r21, r21
+ 1b0:	0a 94       	dec	r0
+ 1b2:	e2 f7       	brpl	.-8      	; 0x1ac <__vector_7+0x58>
+ 1b4:	84 2b       	or	r24, r20
+ 1b6:	2f 5f       	subi	r18, 0xFF	; 255
+ 1b8:	3f 4f       	sbci	r19, 0xFF	; 255
+	
+	if(phase_on_count > 240){
+		phase_on_count = 0;
+	}
+	
+	for(tmp = 0;tmp <8;tmp++){
+ 1ba:	28 30       	cpi	r18, 0x08	; 8
+ 1bc:	31 05       	cpc	r19, r1
+ 1be:	59 f7       	brne	.-42     	; 0x196 <__vector_7+0x42>
+		if(phase_on_count>val[tmp]) out |= (1<<tmp);
+	}
+	out_ext(out);
+ 1c0:	0e 94 a3 00 	call	0x146	; 0x146 <out_ext>
+	
+	if(dmx_lost<DMX_LOST_TIMEOUT){
+ 1c4:	80 91 00 01 	lds	r24, 0x0100
+ 1c8:	90 91 01 01 	lds	r25, 0x0101
+ 1cc:	80 34       	cpi	r24, 0x40	; 64
+ 1ce:	9f 41       	sbci	r25, 0x1F	; 31
+ 1d0:	48 f4       	brcc	.+18     	; 0x1e4 <__vector_7+0x90>
+		dmx_lost++;
+ 1d2:	80 91 00 01 	lds	r24, 0x0100
+ 1d6:	90 91 01 01 	lds	r25, 0x0101
+ 1da:	01 96       	adiw	r24, 0x01	; 1
+ 1dc:	90 93 01 01 	sts	0x0101, r25
+ 1e0:	80 93 00 01 	sts	0x0100, r24
+	}
+}
+ 1e4:	ff 91       	pop	r31
+ 1e6:	ef 91       	pop	r30
+ 1e8:	bf 91       	pop	r27
+ 1ea:	af 91       	pop	r26
+ 1ec:	9f 91       	pop	r25
+ 1ee:	8f 91       	pop	r24
+ 1f0:	7f 91       	pop	r23
+ 1f2:	6f 91       	pop	r22
+ 1f4:	5f 91       	pop	r21
+ 1f6:	4f 91       	pop	r20
+ 1f8:	3f 91       	pop	r19
+ 1fa:	2f 91       	pop	r18
+ 1fc:	0f 90       	pop	r0
+ 1fe:	0f be       	out	0x3f, r0	; 63
+ 200:	0f 90       	pop	r0
+ 202:	1f 90       	pop	r1
+ 204:	18 95       	reti
+
+00000206 <__vector_3>:
+
+//############################################################################
+//ISR vom externen Interrupt (ICP)
+ISR (PCINT0_vect){
+ 206:	1f 92       	push	r1
+ 208:	0f 92       	push	r0
+ 20a:	0f b6       	in	r0, 0x3f	; 63
+ 20c:	0f 92       	push	r0
+ 20e:	11 24       	eor	r1, r1
+	TCNT2 = 0;
+ 210:	10 92 b2 00 	sts	0x00B2, r1
+	phase_on_count = 0;
+ 214:	10 92 05 01 	sts	0x0105, r1
+}
+ 218:	0f 90       	pop	r0
+ 21a:	0f be       	out	0x3f, r0	; 63
+ 21c:	0f 90       	pop	r0
+ 21e:	1f 90       	pop	r1
+ 220:	18 95       	reti
+
+00000222 <main>:
+{  
+	unsigned int dmx_adresse_tmp = 0;
+	unsigned char tmp = 0;
+	unsigned int live_counter = 0;
+
+	LED_OUT;
+ 222:	55 9a       	sbi	0x0a, 5	; 10
+
+//############################################################################
+//
+static inline void spi_init(void){
+	// configure pins MOSI, SCK and CS595 as output
+	SPI_DDR |= (1<<SPI_MOSI) | (1<<SPI_SCK) | (1<<CS_595);
+ 224:	84 b1       	in	r24, 0x04	; 4
+ 226:	8c 62       	ori	r24, 0x2C	; 44
+ 228:	84 b9       	out	0x04, r24	; 4
+	// pull SCK high
+	SPI_PORT |= (1<<SPI_SCK);
+ 22a:	2d 9a       	sbi	0x05, 5	; 5
+	//SPI: enable, master, positive clock phase, msb first, SPI speed fosc/2
+	SPCR = (1<<SPE) | (1<<MSTR);
+ 22c:	80 e5       	ldi	r24, 0x50	; 80
+ 22e:	8c bd       	out	0x2c, r24	; 44
+	SPSR = (1<<SPI2X);
+ 230:	81 e0       	ldi	r24, 0x01	; 1
+ 232:	8d bd       	out	0x2d, r24	; 45
+	
+	out_ext(0x00);
+ 234:	80 e0       	ldi	r24, 0x00	; 0
+ 236:	0e 94 a3 00 	call	0x146	; 0x146 <out_ext>
+
+	LED_OUT;
+	spi_init();
+		
+	//PIN CHANGE INTERRUPT ON PHASE SYNC
+	PCICR |= (1<<PCIE0);
+ 23a:	e8 e6       	ldi	r30, 0x68	; 104
+ 23c:	f0 e0       	ldi	r31, 0x00	; 0
+ 23e:	80 81       	ld	r24, Z
+ 240:	81 60       	ori	r24, 0x01	; 1
+ 242:	80 83       	st	Z, r24
+	PCMSK0 |= (1<<PCINT0);
+ 244:	eb e6       	ldi	r30, 0x6B	; 107
+ 246:	f0 e0       	ldi	r31, 0x00	; 0
+ 248:	80 81       	ld	r24, Z
+ 24a:	81 60       	ori	r24, 0x01	; 1
+ 24c:	80 83       	st	Z, r24
+
+	//Init usart DMX-BUS
+	UBRR0   = (F_CPU / (DMX_BAUD * 16L) - 1);
+ 24e:	82 e0       	ldi	r24, 0x02	; 2
+ 250:	90 e0       	ldi	r25, 0x00	; 0
+ 252:	90 93 c5 00 	sts	0x00C5, r25
+ 256:	80 93 c4 00 	sts	0x00C4, r24
+	UCSR0B|=(1 << RXEN0 | 1<< RXCIE0);
+ 25a:	e1 ec       	ldi	r30, 0xC1	; 193
+ 25c:	f0 e0       	ldi	r31, 0x00	; 0
+ 25e:	80 81       	ld	r24, Z
+ 260:	80 69       	ori	r24, 0x90	; 144
+ 262:	80 83       	st	Z, r24
+	UCSR0C|=(1<<USBS0); //USBS0 2 Stop bits	
+ 264:	e2 ec       	ldi	r30, 0xC2	; 194
+ 266:	f0 e0       	ldi	r31, 0x00	; 0
+ 268:	80 81       	ld	r24, Z
+ 26a:	88 60       	ori	r24, 0x08	; 8
+ 26c:	80 83       	st	Z, r24
+	sei();//Globale Interrupts Enable
+ 26e:	78 94       	sei
+	
+	//Switch 75176 to INPUT RXD
+	DDRD |= (1<<PD2);
+ 270:	52 9a       	sbi	0x0a, 2	; 10
+	PORTD &= ~(1<<PD2);
+ 272:	5a 98       	cbi	0x0b, 2	; 11
+	
+	//Timer für die Phasenanschnittberechnung
+	TCCR2A |= (1<<WGM21);
+ 274:	e0 eb       	ldi	r30, 0xB0	; 176
+ 276:	f0 e0       	ldi	r31, 0x00	; 0
+ 278:	80 81       	ld	r24, Z
+ 27a:	82 60       	ori	r24, 0x02	; 2
+ 27c:	80 83       	st	Z, r24
+	TCCR2B |= (1<<CS21|1<<CS20); // :32
+ 27e:	e1 eb       	ldi	r30, 0xB1	; 177
+ 280:	f0 e0       	ldi	r31, 0x00	; 0
+ 282:	80 81       	ld	r24, Z
+ 284:	83 60       	ori	r24, 0x03	; 3
+ 286:	80 83       	st	Z, r24
+	TIMSK2 |= (1<<OCIE2A);
+ 288:	e0 e7       	ldi	r30, 0x70	; 112
+ 28a:	f0 e0       	ldi	r31, 0x00	; 0
+ 28c:	80 81       	ld	r24, Z
+ 28e:	82 60       	ori	r24, 0x02	; 2
+ 290:	80 83       	st	Z, r24
+	// :32 Teiler
+	// :2 Clock Source 
+	// :50 Hz
+	// :92 - 1 Stepping
+	
+	OCR2A = (F_CPU/32/2/50/240) - 1;
+ 292:	8e e0       	ldi	r24, 0x0E	; 14
+ 294:	80 93 b3 00 	sts	0x00B3, r24
+	
+	//Pullup for DIP Switch
+	PORTD |= (1<<PD3)|(1<<PD4)|(1<<PD7);
+ 298:	8b b1       	in	r24, 0x0b	; 11
+ 29a:	88 69       	ori	r24, 0x98	; 152
+ 29c:	8b b9       	out	0x0b, r24	; 11
+	PORTC |= (1<<PC5)|(1<<PC4)|(1<<PC3)|(1<<PC2)|(1<<PC1)|(1<<PC0);
+ 29e:	88 b1       	in	r24, 0x08	; 8
+ 2a0:	8f 63       	ori	r24, 0x3F	; 63
+ 2a2:	88 b9       	out	0x08, r24	; 8
+	PORTB |= (1<<PB1);
+ 2a4:	29 9a       	sbi	0x05, 1	; 5
+}
+
+//############################################################################
+//Hauptprogramm
+int main (void) 
+{  
+ 2a6:	0f 2e       	mov	r0, r31
+ 2a8:	f2 e1       	ldi	r31, 0x12	; 18
+ 2aa:	cf 2e       	mov	r12, r31
+ 2ac:	f0 2d       	mov	r31, r0
+ 2ae:	0f 2e       	mov	r0, r31
+ 2b0:	f7 e2       	ldi	r31, 0x27	; 39
+ 2b2:	df 2e       	mov	r13, r31
+ 2b4:	f0 2d       	mov	r31, r0
+	
+	//Endlosschleife
+	while(1){
+		//Read DMX Address from Switch
+		dmx_adresse_tmp = 0;
+		if(!(PIND&(1<<PD4))) dmx_adresse_tmp |= 0x01;
+ 2b6:	71 e0       	ldi	r23, 0x01	; 1
+			for(tmp = 0;tmp <8;tmp++){
+				if(dmx_buffer[dmx_adresse+tmp]>128){
+					val[tmp] = 0;
+				}
+				else{
+					val[tmp] = 255;
+ 2b8:	4f ef       	ldi	r20, 0xFF	; 255
+		if(!(PINC&(1<<PC2))) dmx_adresse_tmp |= 0x20;
+		if(!(PINC&(1<<PC1))) dmx_adresse_tmp |= 0x40;
+		if(!(PINC&(1<<PC0))) dmx_adresse_tmp |= 0x80;
+		if(!(PINB&(1<<PB1))) dmx_adresse_tmp |= 0x0100;
+		
+		if(dmx_adresse_tmp == 0) dmx_adresse_tmp = 1;  
+ 2ba:	01 e0       	ldi	r16, 0x01	; 1
+ 2bc:	10 e0       	ldi	r17, 0x00	; 0
+ 2be:	b9 ef       	ldi	r27, 0xF9	; 249
+ 2c0:	a1 e0       	ldi	r26, 0x01	; 1
+		if(dmx_adresse_tmp > 505) dmx_adresse_tmp = 505;
+		if(dmx_adresse != dmx_adresse_tmp) dmx_adresse =  dmx_adresse_tmp;	
+		
+		//new calculation of val
+		if(PIND&(1<<PD7)){
+ 2c2:	60 e0       	ldi	r22, 0x00	; 0
+ 2c4:	50 e0       	ldi	r21, 0x00	; 0
+				dmx_buffer[dmx_adresse + tmp] = 0;
+			}
+		}
+		
+		if((live_counter++) > 10000) {
+			LED_TOGGLE;
+ 2c6:	68 94       	set
+ 2c8:	ee 24       	eor	r14, r14
+ 2ca:	e5 f8       	bld	r14, 5
+}
+
+//############################################################################
+//Hauptprogramm
+int main (void) 
+{  
+ 2cc:	2c 2d       	mov	r18, r12
+ 2ce:	3d 2d       	mov	r19, r13
+	
+	//Endlosschleife
+	while(1){
+		//Read DMX Address from Switch
+		dmx_adresse_tmp = 0;
+		if(!(PIND&(1<<PD4))) dmx_adresse_tmp |= 0x01;
+ 2d0:	89 b1       	in	r24, 0x09	; 9
+ 2d2:	82 95       	swap	r24
+ 2d4:	8f 70       	andi	r24, 0x0F	; 15
+ 2d6:	87 27       	eor	r24, r23
+ 2d8:	81 70       	andi	r24, 0x01	; 1
+ 2da:	c8 2f       	mov	r28, r24
+ 2dc:	80 e0       	ldi	r24, 0x00	; 0
+ 2de:	d8 2f       	mov	r29, r24
+	PORTB |= (1<<PB1);
+	
+	//Endlosschleife
+	while(1){
+		//Read DMX Address from Switch
+		dmx_adresse_tmp = 0;
+ 2e0:	ce 01       	movw	r24, r28
+		if(!(PIND&(1<<PD4))) dmx_adresse_tmp |= 0x01;
+ 		if(!(PIND&(1<<PD3))) dmx_adresse_tmp |= 0x02;
+ 2e2:	4b 9b       	sbis	0x09, 3	; 9
+ 2e4:	82 60       	ori	r24, 0x02	; 2
+		if(!(PINC&(1<<PC5))) dmx_adresse_tmp |= 0x04;
+ 2e6:	35 9b       	sbis	0x06, 5	; 6
+ 2e8:	84 60       	ori	r24, 0x04	; 4
+		if(!(PINC&(1<<PC4))) dmx_adresse_tmp |= 0x08;
+ 2ea:	34 9b       	sbis	0x06, 4	; 6
+ 2ec:	88 60       	ori	r24, 0x08	; 8
+		if(!(PINC&(1<<PC3))) dmx_adresse_tmp |= 0x10;
+ 2ee:	33 9b       	sbis	0x06, 3	; 6
+ 2f0:	80 61       	ori	r24, 0x10	; 16
+		if(!(PINC&(1<<PC2))) dmx_adresse_tmp |= 0x20;
+ 2f2:	32 9b       	sbis	0x06, 2	; 6
+ 2f4:	80 62       	ori	r24, 0x20	; 32
+		if(!(PINC&(1<<PC1))) dmx_adresse_tmp |= 0x40;
+ 2f6:	31 9b       	sbis	0x06, 1	; 6
+ 2f8:	80 64       	ori	r24, 0x40	; 64
+		if(!(PINC&(1<<PC0))) dmx_adresse_tmp |= 0x80;
+ 2fa:	30 9b       	sbis	0x06, 0	; 6
+ 2fc:	80 68       	ori	r24, 0x80	; 128
+		if(!(PINB&(1<<PB1))) dmx_adresse_tmp |= 0x0100;
+ 2fe:	19 9b       	sbis	0x03, 1	; 3
+ 300:	91 60       	ori	r25, 0x01	; 1
+		
+		if(dmx_adresse_tmp == 0) dmx_adresse_tmp = 1;  
+ 302:	00 97       	sbiw	r24, 0x00	; 0
+ 304:	11 f4       	brne	.+4      	; 0x30a <main+0xe8>
+ 306:	80 2f       	mov	r24, r16
+ 308:	91 2f       	mov	r25, r17
+ 30a:	8a 3f       	cpi	r24, 0xFA	; 250
+ 30c:	e1 e0       	ldi	r30, 0x01	; 1
+ 30e:	9e 07       	cpc	r25, r30
+ 310:	10 f0       	brcs	.+4      	; 0x316 <main+0xf4>
+ 312:	8b 2f       	mov	r24, r27
+ 314:	9a 2f       	mov	r25, r26
+		if(dmx_adresse_tmp > 505) dmx_adresse_tmp = 505;
+		if(dmx_adresse != dmx_adresse_tmp) dmx_adresse =  dmx_adresse_tmp;	
+ 316:	e0 91 06 01 	lds	r30, 0x0106
+ 31a:	f0 91 07 01 	lds	r31, 0x0107
+ 31e:	e8 17       	cp	r30, r24
+ 320:	f9 07       	cpc	r31, r25
+ 322:	21 f0       	breq	.+8      	; 0x32c <main+0x10a>
+ 324:	90 93 07 01 	sts	0x0107, r25
+ 328:	80 93 06 01 	sts	0x0106, r24
+		
+		//new calculation of val
+		if(PIND&(1<<PD7)){
+ 32c:	4f 9b       	sbis	0x09, 7	; 9
+ 32e:	15 c0       	rjmp	.+42     	; 0x35a <main+0x138>
+ 330:	86 2f       	mov	r24, r22
+ 332:	95 2f       	mov	r25, r21
+			for(tmp = 0;tmp <8;tmp++){
+				val[tmp] = (255 - dmx_buffer[dmx_adresse+tmp]);
+ 334:	e0 91 06 01 	lds	r30, 0x0106
+ 338:	f0 91 07 01 	lds	r31, 0x0107
+ 33c:	e8 0f       	add	r30, r24
+ 33e:	f9 1f       	adc	r31, r25
+ 340:	e0 5f       	subi	r30, 0xF0	; 240
+ 342:	fe 4f       	sbci	r31, 0xFE	; 254
+ 344:	f0 80       	ld	r15, Z
+ 346:	f0 94       	com	r15
+ 348:	fc 01       	movw	r30, r24
+ 34a:	e8 5f       	subi	r30, 0xF8	; 248
+ 34c:	fe 4f       	sbci	r31, 0xFE	; 254
+ 34e:	f0 82       	st	Z, r15
+ 350:	01 96       	adiw	r24, 0x01	; 1
+		if(dmx_adresse_tmp > 505) dmx_adresse_tmp = 505;
+		if(dmx_adresse != dmx_adresse_tmp) dmx_adresse =  dmx_adresse_tmp;	
+		
+		//new calculation of val
+		if(PIND&(1<<PD7)){
+			for(tmp = 0;tmp <8;tmp++){
+ 352:	88 30       	cpi	r24, 0x08	; 8
+ 354:	91 05       	cpc	r25, r1
+ 356:	71 f7       	brne	.-36     	; 0x334 <main+0x112>
+ 358:	1a c0       	rjmp	.+52     	; 0x38e <main+0x16c>
+		if(dmx_adresse_tmp == 0) dmx_adresse_tmp = 1;  
+		if(dmx_adresse_tmp > 505) dmx_adresse_tmp = 505;
+		if(dmx_adresse != dmx_adresse_tmp) dmx_adresse =  dmx_adresse_tmp;	
+		
+		//new calculation of val
+		if(PIND&(1<<PD7)){
+ 35a:	86 2f       	mov	r24, r22
+ 35c:	95 2f       	mov	r25, r21
+			for(tmp = 0;tmp <8;tmp++){
+				val[tmp] = (255 - dmx_buffer[dmx_adresse+tmp]);
+			}
+		}else{
+			for(tmp = 0;tmp <8;tmp++){
+				if(dmx_buffer[dmx_adresse+tmp]>128){
+ 35e:	e0 91 06 01 	lds	r30, 0x0106
+ 362:	f0 91 07 01 	lds	r31, 0x0107
+ 366:	e8 0f       	add	r30, r24
+ 368:	f9 1f       	adc	r31, r25
+ 36a:	e0 5f       	subi	r30, 0xF0	; 240
+ 36c:	fe 4f       	sbci	r31, 0xFE	; 254
+ 36e:	e0 81       	ld	r30, Z
+ 370:	e1 38       	cpi	r30, 0x81	; 129
+ 372:	28 f0       	brcs	.+10     	; 0x37e <main+0x15c>
+					val[tmp] = 0;
+ 374:	fc 01       	movw	r30, r24
+ 376:	e8 5f       	subi	r30, 0xF8	; 248
+ 378:	fe 4f       	sbci	r31, 0xFE	; 254
+ 37a:	10 82       	st	Z, r1
+ 37c:	04 c0       	rjmp	.+8      	; 0x386 <main+0x164>
+				}
+				else{
+					val[tmp] = 255;
+ 37e:	fc 01       	movw	r30, r24
+ 380:	e8 5f       	subi	r30, 0xF8	; 248
+ 382:	fe 4f       	sbci	r31, 0xFE	; 254
+ 384:	40 83       	st	Z, r20
+ 386:	01 96       	adiw	r24, 0x01	; 1
+		if(PIND&(1<<PD7)){
+			for(tmp = 0;tmp <8;tmp++){
+				val[tmp] = (255 - dmx_buffer[dmx_adresse+tmp]);
+			}
+		}else{
+			for(tmp = 0;tmp <8;tmp++){
+ 388:	88 30       	cpi	r24, 0x08	; 8
+ 38a:	91 05       	cpc	r25, r1
+ 38c:	41 f7       	brne	.-48     	; 0x35e <main+0x13c>
+					val[tmp] = 255;
+				}
+			}
+		}
+		
+		if(dmx_lost==DMX_LOST_TIMEOUT){
+ 38e:	80 91 00 01 	lds	r24, 0x0100
+ 392:	90 91 01 01 	lds	r25, 0x0101
+ 396:	80 34       	cpi	r24, 0x40	; 64
+ 398:	9f 41       	sbci	r25, 0x1F	; 31
+ 39a:	79 f4       	brne	.+30     	; 0x3ba <main+0x198>
+ 39c:	86 2f       	mov	r24, r22
+ 39e:	95 2f       	mov	r25, r21
+			for(tmp = 0;tmp <8;tmp++){
+				dmx_buffer[dmx_adresse + tmp] = 0;
+ 3a0:	e0 91 06 01 	lds	r30, 0x0106
+ 3a4:	f0 91 07 01 	lds	r31, 0x0107
+ 3a8:	e8 0f       	add	r30, r24
+ 3aa:	f9 1f       	adc	r31, r25
+ 3ac:	e0 5f       	subi	r30, 0xF0	; 240
+ 3ae:	fe 4f       	sbci	r31, 0xFE	; 254
+ 3b0:	10 82       	st	Z, r1
+ 3b2:	01 96       	adiw	r24, 0x01	; 1
+				}
+			}
+		}
+		
+		if(dmx_lost==DMX_LOST_TIMEOUT){
+			for(tmp = 0;tmp <8;tmp++){
+ 3b4:	88 30       	cpi	r24, 0x08	; 8
+ 3b6:	91 05       	cpc	r25, r1
+ 3b8:	99 f7       	brne	.-26     	; 0x3a0 <main+0x17e>
+ 3ba:	21 50       	subi	r18, 0x01	; 1
+ 3bc:	31 09       	sbc	r19, r1
+				dmx_buffer[dmx_adresse + tmp] = 0;
+			}
+		}
+		
+		if((live_counter++) > 10000) {
+ 3be:	21 15       	cp	r18, r1
+ 3c0:	31 05       	cpc	r19, r1
+ 3c2:	09 f0       	breq	.+2      	; 0x3c6 <main+0x1a4>
+ 3c4:	85 cf       	rjmp	.-246    	; 0x2d0 <main+0xae>
+			LED_TOGGLE;
+ 3c6:	8b b1       	in	r24, 0x0b	; 11
+ 3c8:	8e 25       	eor	r24, r14
+ 3ca:	8b b9       	out	0x0b, r24	; 11
+ 3cc:	7f cf       	rjmp	.-258    	; 0x2cc <main+0xaa>
+
+000003ce <_exit>:
+ 3ce:	f8 94       	cli
+
+000003d0 <__stop_program>:
+ 3d0:	ff cf       	rjmp	.-2      	; 0x3d0 <__stop_program>
