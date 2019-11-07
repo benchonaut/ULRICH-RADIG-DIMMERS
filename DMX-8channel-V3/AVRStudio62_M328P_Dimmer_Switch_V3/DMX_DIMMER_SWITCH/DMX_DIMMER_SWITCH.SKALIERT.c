@@ -1,9 +1,9 @@
 /*------------------------------------------------------------------------------
  Copyright:      Radig Ulrich  mailto: mail@ulrichradig.de
- Author:         Radig Ulrich
- Remarks:        
+ Author:         Radig Ulrich ( orig) , ulrich radig forum members,  TET Babylon 
+ Remarks:        removed flickering, scaled values 
  known Problems: none
- Version:        19.04.2017
+ Version:        05.10.2019
  Description:    DMX_8 Kanal_Dimmer
 ------------------------------------------------------------------------------*/
 
@@ -21,27 +21,25 @@
 
 // map table with 255 values. Three times the same value scaled down at the end
 //uint8_t valMap[] = {90,89,89,88,88,87,87,...7,7,6,6,5,5,4,4,3,3,2,2,1,0,0};
+	
 
-
-// see https://www.ulrichradig.de/forum/viewtopic.php?f=53&t=2656
 unsigned char valMap[256] = {
-90,90,89,89,89,88,88,88,87,87,86,86,86,85,85,85,84,
-84,84,83,83,83,82,82,82,81,81,80,80,80,79,79,79,78,
-78,78,77,77,77,76,76,76,75,75,74,74,74,73,73,73,72,
-72,72,71,71,71,70,70,70,69,69,68,68,68,67,67,67,66,
-66,66,65,65,65,64,64,64,63,63,62,62,62,61,61,61,60,
-60,60,59,59,59,58,58,58,57,57,56,56,56,55,55,55,54,
-54,54,53,53,53,52,52,52,51,51,50,50,50,49,49,49,48,
-48,48,47,47,47,46,46,46,45,45,44,44,44,43,43,43,42,
-42,42,41,41,41,40,40,40,39,39,38,38,38,37,37,37,36,
-36,36,35,35,35,34,34,34,33,33,32,32,32,31,31,31,30,
-30,30,29,29,29,28,28,28,27,27,26,26,26,25,25,25,24,
-24,24,23,23,23,22,22,22,21,21,20,20,20,19,19,19,18,
-18,18,17,17,17,16,16,16,15,15,14,14,14,13,13,13,12,
-12,12,11,11,11,10,10,10,9,9,8,8,8,7,7,7,6,6,6,5,5,5,4,
-4,4,3,3,2,2,2,1,1,1,0,0};
-
-
+		90,90,89,89,89,88,88,88,87,87,86,86,86,85,85,85,84,
+		84,84,83,83,83,82,82,82,81,81,80,80,80,79,79,79,78,
+		78,78,77,77,77,76,76,76,75,75,74,74,74,73,73,73,72,
+		72,72,71,71,71,70,70,70,69,69,68,68,68,67,67,67,66,
+		66,66,65,65,65,64,64,64,63,63,62,62,62,61,61,61,60,
+		60,60,59,59,59,58,58,58,57,57,56,56,56,55,55,55,54,
+		54,54,53,53,53,52,52,52,51,51,50,50,50,49,49,49,48,
+		48,48,47,47,47,46,46,46,45,45,44,44,44,43,43,43,42,
+		42,42,41,41,41,40,40,40,39,39,38,38,38,37,37,37,36,
+		36,36,35,35,35,34,34,34,33,33,32,32,32,31,31,31,30,
+		30,30,29,29,29,28,28,28,27,27,26,26,26,25,25,25,24,
+		24,24,23,23,23,22,22,22,21,21,20,20,20,19,19,19,18,
+		18,18,17,17,17,16,16,16,15,15,14,14,14,13,13,13,12,
+		12,12,11,11,11,10,10,10,9,9,8,8,8,7,7,7,6,6,6,5,5,5,
+		4,4,4,3,3,2,2,2,1,1,1,0,0};
+	
 volatile unsigned char dmx_buffer[513];
 volatile unsigned int dmx_lost = DMX_LOST_TIMEOUT;
 
@@ -60,7 +58,7 @@ volatile unsigned char val[8];
 #define CS_595_LO()				PORTB |= (1<<CS_595)
 
 //############################################################################
-//Empfangsroutine für DMX
+//Empfangsroutine fÃ¼r DMX
 ISR (USART_RX_vect){
 	static unsigned int dmx_channel_rx_count = 0;
 	static unsigned char dmx_valid = 0;
@@ -117,14 +115,14 @@ static inline void spi_init(void){
 }
 
 //############################################################################
-//Hier wird die Zeit gezählt (Tick 100µs)
+//Hier wird die Zeit gezÃ¤hlt (Tick 100Âµs)
 ISR (TIMER2_COMPA_vect)
 {
 	unsigned char out = 0;
 	unsigned char tmp = 0;
 	phase_on_count++;
 	
-	if(phase_on_count > 240){
+	if(phase_on_count > 90){
 		phase_on_count = 0;
 	}
 	
@@ -170,17 +168,17 @@ int main (void)
 	DDRD |= (1<<PD2);
 	PORTD &= ~(1<<PD2);
 	
-	//Timer für die Phasenanschnittberechnung
+	//Timer fÃ¼r die Phasenanschnittberechnung
 	TCCR2A |= (1<<WGM21);
-	TCCR2B |= (1<<CS21|1<<CS20); // :32
+	TCCR2B |= (1<<CS22|1<<CS21); // :256
 	TIMSK2 |= (1<<OCIE2A);
 
-	// :32 Teiler
+	// :256 Teiler
 	// :2 Clock Source 
 	// :50 Hz
 	// :92 - 1 Stepping
 	
-	OCR2A = (F_CPU/32/2/50/240) - 1;
+	OCR2A = (F_CPU/256/2/50/94) - 1;
 	
 	//Pullup for DIP Switch
 	PORTD |= (1<<PD3)|(1<<PD4)|(1<<PD7);
@@ -209,7 +207,6 @@ int main (void)
 		if(PIND&(1<<PD7)){
 			for(tmp = 0;tmp <8;tmp++){
 				val[tmp] = valMap[dmx_buffer[dmx_adresse+tmp]];
-				//val[tmp] = (255 - dmx_buffer[dmx_adresse+tmp]);
 			}
 		}else{
 			for(tmp = 0;tmp <8;tmp++){
